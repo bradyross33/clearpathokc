@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services · Clear Path Leadership</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #00BDFF;
+    --black: #0a0a0a;
+    --white: #FFFFFF;
+    --gray-light: #f7f7f7;
+    --gray-mid: #e4e4e4;
+    --gray-text: #686868;
+    --gray-dark: #111111;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    background: rgba(255,255,255,0.98);
+    border-bottom: 1px solid var(--gray-mid);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav-wordmark {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .nav-wordmark span {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+  .nav-cta {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 11px 24px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+
+  .nav-cta:hover { background: var(--blue); color: var(--black); }
+
+  /* ── PAGE HEADER ─────────────────────────────────── */
+  .page-header {
+    background: var(--black);
+    padding: 100px 60px;
+  }
+
+  .page-header-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 em {
+    font-style: normal;
+    color: var(--blue);
+  }
+
+  .page-header p {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.48);
+    max-width: 480px;
+    line-height: 1.75;
+  }
+
+  /* ── FLAGSHIP ────────────────────────────────────── */
+  .flagship {
+    padding: 100px 60px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-mid);
+  }
+
+  .flagship-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .flagship-badge {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    margin-bottom: 24px;
+  }
+
+  .flagship h2 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .flagship-lead {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .btn-blue {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--black);
+    padding: 15px 34px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+
+  .btn-blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(0,189,255,0.32);
+  }
+
+  .flagship-right {
+    border-left: 1px solid var(--gray-mid);
+    padding-left: 80px;
+  }
+
+  .flagship-right-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    margin-bottom: 20px;
+  }
+
+  .flagship-right p {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--gray-text);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* ── OTHER SERVICES ──────────────────────────────── */
+  .other-services {
+    background: var(--gray-light);
+    padding: 100px 60px;
+  }
+
+  .other-services-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .other-header {
+    margin-bottom: 52px;
+  }
+
+  .other-header h2 {
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-top: 12px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .svc-card {
+    background: var(--white);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s;
+  }
+
+  .svc-card::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 3px;
+    background: var(--blue);
+    transition: width 0.32s ease;
+  }
+
+  .svc-card:hover { transform: translateY(-3px); }
+  .svc-card:hover::after { width: 100%; }
+
+  .svc-num {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  .svc-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .svc-card p {
+    font-size: 13px;
+    color: var(--gray-text);
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  /* ── CTA ─────────────────────────────────────────── */
+  .cta-section {
+    background: var(--blue);
+    padding: 100px 60px;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .cta-section label {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 18px;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+    color: rgba(0,0,0,0.52);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+
+  .btn-dark {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 16px 38px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.18s;
+  }
+
+  .btn-dark:hover { opacity: 0.78; }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: var(--gray-dark);
+    padding: 52px 60px 36px;
+  }
+
+  .footer-bottom {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-wordmark {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+
+  .footer-wordmark span {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.18s;
+  }
+
+  .footer-link:hover { color: var(--blue); }
+
+  /* ── HAMBURGER ───────────────────────────────────── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 0.25s ease; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 199; flex-direction: column; padding: 40px 32px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; color: var(--black); text-decoration: none; padding: 20px 0; border-bottom: 1px solid var(--gray-mid); transition: color 0.18s; }
+  .mobile-menu a:hover { color: var(--blue); }
+  .mobile-menu .mobile-cta { margin-top: 32px; background: var(--black); color: var(--white); padding: 16px 24px; font-size: 12px; font-weight: 800; letter-spacing: 0.17em; text-transform: uppercase; text-align: center; border-bottom: none; }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 860px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .page-header { padding: 72px 24px; }
+    .flagship { padding: 72px 24px; }
+    .flagship-inner { grid-template-columns: 1fr; gap: 48px; }
+    .flagship-right { border-left: none; border-top: 1px solid var(--gray-mid); padding-left: 0; padding-top: 40px; }
+    .other-services { padding: 72px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 72px 24px; }
+    footer { padding: 40px 24px 28px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-wordmark">
+      <span>Clear</span>
+      <span style="color:var(--blue);">Path</span>
+      <span>Leadership</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <a href="mailto:info@clearpathokc.com" class="nav-cta">Let's Talk</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html">Services</a>
+  <a href="events.html">Events</a>
+  <a href="resources.html">Resources</a>
+  <a href="mailto:info@clearpathokc.com" class="mobile-cta">Let's Talk</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow">What We Offer</p>
+    <h1>Better leaders build <em>better companies.</em></h1>
+    <p>No two organizations are the same. Here's how we tailor our work to yours.</p>
+  </div>
+</div>
+
+<!-- FLAGSHIP -->
+<section class="flagship">
+  <div class="flagship-inner">
+    <div>
+      <div class="flagship-badge">Flagship Service</div>
+      <h2>Fractional Leadership Development</h2>
+      <p class="flagship-lead">Leadership development works best when it's consistent, strategic, and built into how you operate. As your fractional partner, Clear Path builds the infrastructure, programming, and accountability that makes leadership growth a permanent part of how you run your business.</p>
+      <a href="mailto:info@clearpathokc.com?subject=Fractional%20Leadership%20Development" class="btn-blue">Schedule a Conversation</a>
+    </div>
+    <div class="flagship-right">
+      <p class="flagship-right-label">Who This Is For</p>
+      <p>Growing companies who want to build a leadership culture, HR leaders looking for a consistent development partner, and organizations who've tried one-off training and know there has to be a better way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER SERVICES -->
+<section class="other-services">
+  <div class="other-services-inner">
+    <div class="other-header">
+      <p class="eyebrow">Additional Services</p>
+      <h2>Other ways we can help</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <h3>Keynote Speaking</h3>
+        <p>An energizing, memorable message crafted specifically for your audience, your theme, and your goals. We don't do off-the-shelf.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Workshops &amp; Training</h3>
+        <p>Focused, practical sessions built around your team's specific needs. We have proven frameworks ready to go, and the flexibility to build something custom if that's what fits.</p>
+      </div>
+      <div class="svc-card">
+        <h3>One-on-One Coaching</h3>
+        <p>Personalized coaching for leaders who want to grow with intention, whether they're navigating a new role, working through a challenge, or ready to take their leadership to the next level.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Strategic Planning</h3>
+        <p>Great leadership teams work with clarity, purpose, and shared direction. We facilitate the conversations, planning, and accountability structures that make that possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <label>Let's Find the Right Fit</label>
+    <h2>Not sure where to start?</h2>
+    <p>Every engagement is different. Send us a message and we'll figure out together what makes the most sense for your team.</p>
+    <a href="mailto:info@clearpathokc.com" class="btn-dark">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-wordmark">
+      <span>Clear</span>
+      <span>Path</span>
+      <span>Leadership</span>
+    </div>
+    <p class="footer-copy">© 2026 Clear Path Leadership. All rights reserved.</p>
+    <a href="mailto:info@clearpathokc.com" class="footer-link">info@clearpathokc.com</a>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
